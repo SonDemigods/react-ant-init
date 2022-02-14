@@ -1,6 +1,6 @@
 const config = {
   baseUrl: {
-    dev: 'http://192.168.100.0:8080',
+    dev: 'http://192.168.2.242:8080/',
     pro: ''
   }
 }

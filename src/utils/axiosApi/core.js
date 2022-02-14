@@ -24,8 +24,8 @@ class HttpRequest {
     const config = {
       baseURL: this.baseUrl,
       headers: {
-        'Content-Type': 'application/json',
-        'access_token': localStorage.getItem('token')
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'access_token': localStorage.getItem('token') || ''
       },
       withCredentials: true
     }
@@ -52,19 +52,16 @@ class HttpRequest {
         const {
           data
         } = res
-        if (data.resultCode !== 200) {
+        if (data.errorCode !== 200) {
           message.warning({
-            content: data.resultMsg
+            content: data.errorDescription
           })
-        }
-        if (data.resultCode === 50001) {
-          localStorage.clear()
         }
         return data
       },
       error => {
         // 获取错误数据
-        const _error = error.response
+        const _error = error.response || {}
         // 获取状态码
         const { status = 'default' } = _error
         // 获取提示信息
@@ -115,7 +112,7 @@ class HttpRequest {
    * @date 2020-03-20 10:45:17
    * @version V1.0.0
    */
-  post (url = '', data = {}, type = true) {
+  post ({url = '', data = {}, type = false}) {
     const _data = type ? data : qs.stringify(data, {
       arrayFormat: 'repeat'
     })
@@ -137,7 +134,7 @@ class HttpRequest {
    * @date 2020-03-20 10:45:17
    * @version V1.0.0
    */
-  put (url = '', data = {}, type = true) {
+  put ({url = '', data = {}, type = false}) {
     const _data = type ? data : qs.stringify(data, {
       arrayFormat: 'repeat'
     })
@@ -159,7 +156,7 @@ class HttpRequest {
    * @date 2020-03-20 10:45:17
    * @version V1.0.0
    */
-  delete (url = '', data = {}, type = true) {
+  delete ({url = '', data = {}, type = false}) {
     const _data = type ? data : qs.stringify(data, {
       arrayFormat: 'repeat'
     })

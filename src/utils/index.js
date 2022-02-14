@@ -1,7 +1,9 @@
-import api from './api';
+import axiosApi from './axiosApi';
 
 const utils = {
-  api
+  axiosApi
 }
+
+export { axiosApi };
 
 export default utils;
