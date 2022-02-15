@@ -1,12 +1,12 @@
 import 'antd/dist/antd.css';
 import './App.less';
 
-import BasicRoute from './routes';
+import EsintLayout from './components/EsintLayout';
 
 function App() {
   return (
     <div className="App">
-      <BasicRoute />
+      <EsintLayout />
     </div>
   );
 }

@@ -172,10 +172,11 @@ class EsintList extends Component {
    * @version V1.0.0
    */
   deleteData (data) {
+    const {id} = data
     axiosApi.post({
       url: api.delete,
       data: {
-        id: data.id
+        ids: [id]
       }
     }).then(res => {
       this.getListData();
@@ -202,8 +203,8 @@ class EsintList extends Component {
       okButtonProps: {
         danger: true
       },
-      onOk () {
-        console.log('OK');
+      onOk: () => {
+        this.deleteData(row);
       },
       onCancel () {
         console.log('Cancel');
