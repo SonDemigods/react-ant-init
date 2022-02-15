@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { ConfigProvider, Table, Drawer, Button, Modal, Form, Input, Select } from 'antd';
+import { ConfigProvider, Table, Drawer, Button, Modal, Form, Input, InputNumber, Select } from 'antd';
 
 import zhCN from 'antd/lib/locale/zh_CN';
 
@@ -108,7 +108,8 @@ class EsintList extends Component {
       this.setState({
         data: response.users,
         total: response.count,
-        current: response.pageNo
+        current: response.pageNo,
+        pageSize: response.pageSize
       })
     });
   }
@@ -375,12 +376,13 @@ class EsintList extends Component {
       data = {},
       total = 0,
       current = 1,
+      pageSize = 1,
       panelShow,
       panelTitle
     } = this.state;
     return (
       <div>
-        <div>
+        <div className="handle-box">
           <Button
             type="primary"
             onClick={() => this.creatBtn()}
@@ -399,7 +401,7 @@ class EsintList extends Component {
             showQuickJumper: true,
             total: total,
             current: current,
-            pageSize: 1
+            pageSize: pageSize
           }}
           onChange={(pagination) => this.changeList(pagination)}
         />
@@ -443,12 +445,23 @@ class EsintList extends Component {
               label="年龄"
               rules={[
                 {
+                  type: 'number',
+                  min: 0,
+                  message: '年龄不能小于0!',
+                },
+                {
+                  type: 'number',
+                  max: 150,
+                  message: '年龄不能大于150!',
+                },
+                {
                   required: true,
+                  type: 'number',
                   message: '请填写年龄!',
                 },
               ]}
             >
-              <Input placeholder="请填写年龄" />
+              <InputNumber style={{width: '100%'}} placeholder="请填写年龄" />
             </Form.Item>
             <Form.Item
               name="userSex"
@@ -485,6 +498,10 @@ class EsintList extends Component {
               label="邮箱"
               rules={[
                 {
+                  type: 'email',
+                  message: '请填写正确的邮箱!',
+                },
+                {
                   required: true,
                   message: '请填写邮箱!',
                 },
@@ -496,10 +513,10 @@ class EsintList extends Component {
               name="userAddress"
               label="地址"
               rules={[
-                {
-                  required: true,
-                  message: '请填写地址!',
-                },
+                // {
+                //   required: true,
+                //   message: '请填写地址!',
+                // },
               ]}
             >
               <Input placeholder="请填写地址" />

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { HashRouter } from 'react-router-dom'
+
 import { Layout, Card } from 'antd';
 
 import EsintHeader from './components/EsintHeader';
@@ -31,19 +33,19 @@ class EsintLayout extends Component {
 
   render () {
     return (
-      <Layout>
-        <EsintHeader />
+      <HashRouter>
         <Layout>
-          <EsintSider />
-          <Layout.Content className="layout-main">
-          <Card 
-            hoverable
-          >
-            <BasicRoute />
-            </Card>
-          </Layout.Content>
+          <EsintHeader />
+          <Layout>
+            {/* <EsintSider /> */}
+            <Layout.Content className="layout-main">
+              <Card>
+                <BasicRoute />
+              </Card>
+            </Layout.Content>
+          </Layout>
         </Layout>
-      </Layout>
+      </HashRouter>
     );
   }
 }

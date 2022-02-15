@@ -3,10 +3,10 @@ import './App.less';
 
 import EsintLayout from './components/EsintLayout';
 
-function App() {
+function App () {
   return (
     <div className="App">
-      <EsintLayout />
+        <EsintLayout />
     </div>
   );
 }

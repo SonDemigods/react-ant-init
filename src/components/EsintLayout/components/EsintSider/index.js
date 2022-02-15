@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
-import { Layout } from 'antd';
+import { Layout, Menu } from 'antd';
+
+import {
+  UserOutlined
+} from '@ant-design/icons';
 
 import './index.less'
 
@@ -26,7 +30,15 @@ class EsintLayout extends Component {
 
   render () {
     return (
-      <Layout.Sider>Sider</Layout.Sider>
+      <Layout.Sider>
+        <Menu
+          style={{ width: 256 }}
+        >
+          <Menu.Item key="1" icon={<UserOutlined />}>
+            用户管理
+          </Menu.Item>
+        </Menu>
+      </Layout.Sider>
     );
   }
 }

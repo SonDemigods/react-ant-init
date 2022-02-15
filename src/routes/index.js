@@ -9,13 +9,13 @@ import EsintDetails from '../functions/esint-details';
 class BasicRoute extends Component {
   render () {
     return (
-      <HashRouter>
+      // <HashRouter>
         <Switch>
-          <Route exact path="/" component={EsintHome} />
           <Route exact path="/list" component={EsintList} />
           <Route exact path="/details" component={EsintDetails} />
+          <Route exact path="/" component={EsintHome} />
         </Switch>
-      </HashRouter>
+      // </HashRouter>
     )
   }
 }
