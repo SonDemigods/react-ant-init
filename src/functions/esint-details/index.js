@@ -26,10 +26,40 @@ class EsintDetails extends Component {
 	}
 
 	render() {
-    const {name = ''} = this.props.location.state
+    const {
+      userName = '',
+      userAge = '',
+      userSex = '',
+      userPhone = '',
+      userMail = '',
+      userAddress = ''
+    } = this.props.location.state
 		return (
-				<div>
-					{name}
+				<div className="esint-details">
+					<div>
+            <div className="label">姓名：</div>
+            <div className="text">{userName}</div>
+          </div>
+          <div>
+            <div className="label">年龄：</div>
+            <div className="text">{userAge}</div>
+          </div>
+          <div>
+            <div className="label">性别：</div>
+            <div className="text">{userSex}</div>
+          </div>
+          <div>
+            <div className="label">电话：</div>
+            <div className="text">{userPhone}</div>
+          </div>
+          <div>
+            <div className="label">邮箱：</div>
+            <div className="text">{userMail}</div>
+          </div>
+          <div>
+            <div className="label">地址：</div>
+            <div className="text">{userAddress}</div>
+          </div>
 				</div>
 		);
 	}
